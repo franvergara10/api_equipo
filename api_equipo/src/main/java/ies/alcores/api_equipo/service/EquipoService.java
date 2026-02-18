@@ -1,6 +1,9 @@
 package ies.alcores.api_equipo.service;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import ies.alcores.api_equipo.model.Equipo;
 import ies.alcores.api_equipo.repository.EquipoRepository;
 import lombok.AllArgsConstructor;
 
@@ -10,4 +13,7 @@ public class EquipoService {
 
     private EquipoRepository equipoRepository;
 
+    public List<Equipo> findAll(){
+        return this.equipoRepository.findAll();
+    }
 }
