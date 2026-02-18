@@ -59,7 +59,7 @@ public class EquipoServiceTest {
 		// Then: Verificaciones
 		assertNotNull(resultado);
 		assertEquals("Real Betis", resultado.getNombre());
-		assertEquals(1, resultado.getId());
+		assertEquals(equipoAGuardar.getId(), resultado.getId());
 
 		// Verificamos que el servicio realmente llamó al repositorio
 		verify(this.equipoRepository).save(equipoAGuardar);
