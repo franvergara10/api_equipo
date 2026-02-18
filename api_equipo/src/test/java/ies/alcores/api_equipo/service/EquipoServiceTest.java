@@ -38,7 +38,7 @@ public class EquipoServiceTest {
 		// Then
 		assertNotNull(result);
 		verify(this.equipoRepository).findAll();
-		assertEquals("Prueba", result.get(0).getId());
+		assertEquals("Prueba", result.get(0).getNombre());
 
 	}
 
