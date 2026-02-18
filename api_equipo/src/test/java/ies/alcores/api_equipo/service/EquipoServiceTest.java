@@ -1,43 +1,52 @@
 package ies.alcores.api_equipo.service;
 
-import ies.alcores.api_equipo.model.Equipo;
-import ies.alcores.api_equipo.repository.EquipoRepository;
-import ies.alcores.api_equipo.service.EquipoService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.List;
-import java.util.Optional;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
+import ies.alcores.api_equipo.model.Equipo;
+import ies.alcores.api_equipo.repository.EquipoRepository;
 
 public class EquipoServiceTest {
 
-    private EquipoRepository equipoRepository;
-    private EquipoService equipoService;
+	private EquipoRepository equipoRepository;
+	private EquipoService equipoService;
 
-    @BeforeEach
-    void setUp(){
-        this.equipoRepository = mock(EquipoRepository.class);
-        this.equipoService = new EquipoService(this.equipoRepository);
-    }
+	@BeforeEach
+	void setUp() {
+		this.equipoRepository = mock(EquipoRepository.class);
+		this.equipoService = new EquipoService(this.equipoRepository);
+	}
 
-    @Test
-    void testFindAll(){
+	@Test
+	void testFindAll() {
 
-        //Given
-        Equipo p1 = this.createProducto();
+		// Given
+		Equipo p1 = this.createProducto();
 
-        //When
-        when(this.equipoRepository.findAll()).thenReturn(List.of(p1));
-        List<Equipo> result = this.equipoService.findAll();
+		// When
+		when(this.equipoRepository.findAll()).thenReturn(List.of(p1));
+		List<Equipo> result = this.equipoService.findAll();
 
-        //Then
-        assertNotNull(result);
-        verify(this.equipoRepository).findAll();
-        assertEquals("TEST_0123", result.get(0).getId());
+		// Then
+		assertNotNull(result);
+		verify(this.equipoRepository).findAll();
+		assertEquals("Prueba", result.get(0).getId());
 
-    }
+	}
 
+	private Equipo createProducto() {
+		Equipo p1 = new Equipo();
+		p1.setId(0);
+		p1.setNombre("Prueba");
+
+		return p1;
+	}
 }

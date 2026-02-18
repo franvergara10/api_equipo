@@ -16,4 +16,10 @@ public class EquipoService {
     public List<Equipo> findAll(){
         return this.equipoRepository.findAll();
     }
+    
+    public Equipo create(Equipo equipo) {
+		equipo.setId(0);
+		
+		return this.equipoRepository.save(equipo);
+	}
 }
