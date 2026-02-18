@@ -9,10 +9,6 @@ import lombok.Data;
 public class Equipo {
 
     @Id
-    private String codBarras;
-    private String marca;
-    private String modelo;
-    private int cantidad;
-    private double precio;
-
+    private int id;
+    private String nombre;
 }

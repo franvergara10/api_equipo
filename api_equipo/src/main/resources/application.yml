@@ -3,7 +3,7 @@ spring:
     name: api_productos
 
   datasource:
-    url: jdbc:mysql://localhost:3306/productos
+    url: jdbc:mysql://localhost:3306/equipo
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

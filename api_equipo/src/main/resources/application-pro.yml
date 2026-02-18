@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: pro
   application:
-    name: api_productos
+    name: api_equipo
 
   datasource:
     url: jdbc:mysql://mysql.railway.internal:3306/railway
