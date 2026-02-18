@@ -13,6 +13,7 @@ import lombok.Data;
 @Entity
 public class Equipo {
 
+	//Equipazo
     @Id
     private int id;
     
