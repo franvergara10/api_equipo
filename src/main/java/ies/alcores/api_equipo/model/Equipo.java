@@ -19,7 +19,7 @@ public class Equipo {
     
     private String nombre;
     
-    @OneToMany(mappedBy = "equipo")
+    @OneToMany
     @JsonIgnore
     private List<Jugador> jugadores;
 }

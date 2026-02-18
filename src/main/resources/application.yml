@@ -3,10 +3,12 @@ spring:
     name: api_productos
 
   datasource:
-    url: jdbc:mysql://localhost:3306/equipo
+    # Cambia el protocolo a mariadb
+    url: jdbc:mariadb://localhost:3307/equipo
     username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: secreta
+    # Usa el driver específico de MariaDB
+    driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
     open-in-view: false
@@ -15,4 +17,5 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        # Usa el dialecto específico para MariaDB
+        dialect: org.hibernate.dialect.MariaDBDialect
