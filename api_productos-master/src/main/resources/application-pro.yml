@@ -1,0 +1,22 @@
+spring:
+  config:
+    activate:
+      on-profile: pro
+  application:
+    name: api_productos
+
+  datasource:
+    url: jdbc:mysql://mysql.railway.internal:3306/railway
+    username: root
+    password: vlekUzMExjTxetLSqNKNbmCWldkIMfOt
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
