@@ -2,6 +2,7 @@ package ies.alcores.api_equipo.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -40,6 +41,28 @@ public class EquipoServiceTest {
 		verify(this.equipoRepository).findAll();
 		assertEquals("Prueba", result.get(0).getNombre());
 
+	}
+
+	@Test
+	void testSave() {
+		// Given
+		Equipo equipoAGuardar = new Equipo();
+		equipoAGuardar.setId(1);
+		equipoAGuardar.setNombre("Real Betis");
+
+		// Simulamos que el repositorio devuelve el equipo al guardarlo
+		when(this.equipoRepository.save(any(Equipo.class))).thenReturn(equipoAGuardar);
+
+		// When: Ejecutamos el método del servicio
+		Equipo resultado = this.equipoService.create(equipoAGuardar);
+
+		// Then: Verificaciones
+		assertNotNull(resultado);
+		assertEquals("Real Betis", resultado.getNombre());
+		assertEquals(1, resultado.getId());
+
+		// Verificamos que el servicio realmente llamó al repositorio
+		verify(this.equipoRepository).save(equipoAGuardar);
 	}
 
 	private Equipo createProducto() {
