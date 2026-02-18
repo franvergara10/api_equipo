@@ -1,0 +1,31 @@
+package ies.alcores.api_equipo.service;
+import ies.alcores.api_equipo.model.Equipo;
+import ies.alcores.api_equipo.repository.EquipoRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@AllArgsConstructor
+public class EquipoService {
+
+    private EquipoRepository equipoRepository;
+
+    public List<Equipo> findAll(){
+        return this.equipoRepository.findAll();
+    }
+
+    public Optional<Equipo> findByCodigoBarras(final String codBarras){
+        return this.equipoRepository.findById(codBarras);
+    }
+
+    public Equipo save(final Equipo equipo){
+        return this.equipoRepository.save(equipo);
+    }
+
+    public void delete(final String codBarras){
+        this.equipoRepository.deleteById(codBarras);
+    }
+}

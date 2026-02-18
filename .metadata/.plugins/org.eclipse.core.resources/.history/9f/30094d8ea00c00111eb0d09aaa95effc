@@ -1,0 +1,43 @@
+package ies.alcores.api_equipo.service;
+
+import ies.alcores.api_equipo.model.Equipo;
+import ies.alcores.api_equipo.repository.EquipoRepository;
+import ies.alcores.api_equipo.service.EquipoService;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EquipoServiceTest {
+
+    private EquipoRepository equipoRepository;
+    private EquipoService equipoService;
+
+    @BeforeEach
+    void setUp(){
+        this.equipoRepository = mock(EquipoRepository.class);
+        this.equipoService = new EquipoService(this.equipoRepository);
+    }
+
+    @Test
+    void testFindAll(){
+
+        //Given
+        Equipo p1 = this.createProducto();
+
+        //When
+        when(this.equipoRepository.findAll()).thenReturn(List.of(p1));
+        List<Equipo> result = this.equipoService.findAll();
+
+        //Then
+        assertNotNull(result);
+        verify(this.equipoRepository).findAll();
+        assertEquals("TEST_0123", result.get(0).getCodBarras());
+
+    }
+
+}
