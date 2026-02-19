@@ -35,4 +35,8 @@ public class EquipoService {
 
 		return this.equipoRepository.save(equipo);
 	}
+	
+	 public void delete(int id) {
+	        this.equipoRepository.deleteById(id);
+	    }
 }

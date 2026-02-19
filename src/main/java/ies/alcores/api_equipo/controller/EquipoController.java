@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,4 +43,11 @@ public class EquipoController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(this.equipoService.create(equipo));
 
 	}
+	
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable int id) {
+        this.equipoService.delete(id);
+        return ResponseEntity.ok("Eliminado con éxito");
+    }
 }
