@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class EquipoServiceTest {
 	void testFindAll() {
 
 		// Given
-		Equipo p1 = this.createProducto();
+		Equipo p1 = this.createEquipo();
 
 		// When
 		when(this.equipoRepository.findAll()).thenReturn(List.of(p1));
@@ -42,6 +43,18 @@ public class EquipoServiceTest {
 		assertEquals("Prueba", result.get(0).getNombre());
 
 	}
+	
+	 @Test
+	    void testFindByIdOk() {
+	        Equipo p1 = this.createEquipo();
+
+	        when(this.equipoRepository.findById(p1.getId())).thenReturn(Optional.of(p1));
+	        Equipo result = this.equipoService.findById(p1.getId());
+
+	        assertNotNull(result);
+	        verify(this.equipoRepository).findById(p1.getId());
+	        assertEquals(p1.getNombre(), result.getNombre());
+	 }
 
 	@Test
 	void testSave() {
@@ -65,7 +78,7 @@ public class EquipoServiceTest {
 		verify(this.equipoRepository).save(equipoAGuardar);
 	}
 
-	private Equipo createProducto() {
+	private Equipo createEquipo() {
 		Equipo p1 = new Equipo();
 		p1.setId(0);
 		p1.setNombre("Prueba");
