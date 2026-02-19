@@ -77,6 +77,16 @@ public class EquipoServiceTest {
 		// Verificamos que el servicio realmente llamó al repositorio
 		verify(this.equipoRepository).save(equipoAGuardar);
 	}
+	
+	@Test
+    void testDeleteOk() {
+        Equipo p1 = this.createEquipo();
+
+        when(this.equipoRepository.save(p1)).thenReturn(p1);
+        this.equipoService.delete(p1.getId());
+
+        verify(this.equipoRepository).deleteById(p1.getId());
+    }
 
 	private Equipo createEquipo() {
 		Equipo p1 = new Equipo();
